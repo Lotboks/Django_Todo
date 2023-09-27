@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Todo List</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+
+body {
+  background-image: radial-gradient(#2a3031 50%, #393d3e);
+  display: flex;
+}
+
+.container-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(53, 50, 50);
+  margin: auto;
+  width: 30rem;
+  border-radius: 6vh;
+}
+
+li {
+  display: flex;
+  flex-direction: column;
+  background-color: gray;
+  margin: 20px;
+  padding: 1.2vh 3rem;
+  border-radius: 6px;
+}
+
+ul {
+  padding: 0px 20px 0px 20px;
+}
+
+h3 {
+  word-wrap: break-word;
+}
+
+.edit-link,
+:visited,
+::after {
+  text-decoration: none;
+  color: #b2bec3;
+  background-color: #0984e3;
+  border-radius: 6px;
+  padding: 0.6vh 1.3vw;
+  margin-bottom: 1vh;
+  text-align: center;
+}
+
+.task-title {
+  text-align: center;
+  margin: 10px 0 5px 0;
+}
+
+.title-completed {
+  text-decoration: line-through;
+  text-align: center;
+
+}
+
+.task-completed {
+  height: 1.5rem;
+  width: 1.5rem;
+  background-color: rgb(85, 255, 0);
+  border-radius: 50%;
+}
+
+.task-incomplete {
+  height: 1.5rem;
+  width: 1.5rem;
+  background-color: rgb(255, 0, 0);
+  border-radius: 50%;
+}
+
+.task-status-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 0.3vw;
+}
+
+.create-task-btn {
+  text-decoration: none;
+  color: #2d3436;
+  background-color: #00cec9;
+  margin-bottom: 2vh;
+  padding: 0.8vh 0.8vw;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.todo-list-title {
+  margin: 2vh 0 0 0;
+}
+
+.login-logout-div {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.3vw;
+  width: 90%;
+}
+
+.welcome-user {
+  color: crimson;
+}
+
+.user-name {
+  color: white;
+  padding-right: 0.6vw;
+}
+
+.login-logout-btn {
+  background-color: #81ecec;
+    color: #2d3436;
+    border: none;
+    padding: 0.8vh 1.6vw;
+    border-radius: 6px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.delete-btn {
+  background-color: #81ecec;
+  color: #2d3436;
+  border: none;
+  padding: 0.8vh 6vw;
+  border-radius: 6px;
+  width: 100%;
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+
+body {
+  display: flex;
+  background-color: #3e3e3e;
+  margin: auto;
+}
+
+  .container-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    margin: auto;
+  }
+
+  li {
+    padding: 1.6rem 2.4rem;
+  }
+
+  .delete-btn {
+    padding: 0.4rem 6rem;
+  }
+}
+
+
+    </style>
+</head>
+<body>
+  
+  <div class="container-div">
+
+    <div class="login-logout-div">
+      {% if request.user.is_authenticated %}
+        <h4 class="welcome-user">Welcome: </h4>
+        <h3 class="user-name">{{ user }}</h3>
+        <a href="{% url 'logout' %}"><button type="button" class="login-logout-btn">Logout</button></a>
+        {% else %}
+        <a href="{% url 'login' %}"><button type="button" class="login-logout-btn">Login</button></a>
+      {% endif %}
+    </div>
+      
+      <h1 class="todo-list-title">Todo List</h1>
+      <ul>
+        {% for task in tasks %}
+        <li>
+
+            {% if task.completed %}
+            <div>
+              <h3 class="title-completed">{{ task.title }}</h3>
+            <div class="task-status-container">
+              <p>Finished:</p>
+              <p class="task-completed"></p>
+            </div>
+            <a href="{% url 'update_task' task.pk %}"></a>
+            </div>
+
+            {% else %}
+            <div>
+              <h3 class="task-title">{{ task.title }}</h3>
+            <div class="task-status-container">
+              <p>Finished: </p>
+              <p class="task-incomplete"></p>
+            </div>
+            <a href="{% url 'update_task' task.pk %}"></a>
+          </div>
+
+            {% endif %}
+            <a href="{% url 'update_task' task.pk %}" class="edit-link">Edit</a>
+
+            <form action="{% url 'delete_task' task.pk %}" method="post">
+              {% csrf_token %}
+            <button type="submit" class="delete-btn">Delete</button>
+            </form>
+          </li>
+
+        {% endfor %}
+      </ul>
+      <ul>
+        <li>
+        {% for container in containers %}
+          <h3> {{ container.title }} </h3>
+        {% endfor %}
+        </li>
+      </ul>
+      <a href="{% url 'create_container' %}" class="create-task-btn">Create Container</a>
+      <a href="{% url 'create_task' %}" class="create-task-btn">Create Task</a>
+    </div>
+</body>
+</html>

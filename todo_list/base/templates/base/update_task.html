@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Update Task</title>
+    <link rel="stylesheet" href="{% static 'base/update_task.css' %}" />
+
+  </head>
+  <body>
+    <div class="container-div">
+      <form method="post" action="{% url 'update_task' task.pk %}" class="update-task-form">
+        {% csrf_token %}
+        <h1>Update Task</h1>
+
+        <div class="title-container-div">
+          <label for="id_title" class="form-title-label">Title:</label>
+          <br />
+          <input type="text" name="title" id="id_title" class="form-title-input" value="{{ form.title.value }}"/>
+        </div>
+
+        <div class="deadline-container-div">
+            <label for="id_due">Deadline Date: </label>
+            <input type="datetime-local" name="due" id="id_due" value="{{ form.instance.due|date:'Y-m-d\TH:i' }}">
+        </div>
+
+        <div>
+          <label for="id_description" class="form-description-label">Description: </label>
+          <textarea name="description" id="id_description" class="form-textarea"> {{ form.description.value }} </textarea>
+        </div>
+
+        <label for="checkbox" class="form-completed-label"
+          >Completed:
+          <input type="checkbox" value="Update" name="completed" {% if task.completed %} checked {% endif %}/>
+        </label>
+        
+        
+        <br />
+        <div class="submit-go-back-container">
+            <input type="submit" value="Update" class="form-submit" />
+            <a href="{% url 'container_detail' container_id=task.container.id %}"> 
+            <button type="button" class="go-back-btn">Go Back</button></a>
+        </div>
+        
+      </form>
+    </div>
+
+  </body>
+</html>

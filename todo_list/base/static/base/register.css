@@ -1,0 +1,90 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+        body {
+background-color: #3e3e3e;
+
+}
+    .error-field {
+        color: red;
+    }
+
+    .container-div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 15rem 40rem;
+        border-radius: 20px;
+    }
+
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+.form-body {
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+
+.label-container-div {
+display: flex;
+}
+
+ul.errorlist {
+display: flex;
+list-style-type: none;
+margin: 0;
+padding: 0;
+color: red;
+font-size: 16px;
+}
+
+ul.errorlist li {
+margin: 0;
+padding: 0;
+}
+
+input[type="text"],
+input[type="password"] {
+border: 2px black solid;
+border-radius: 6px;
+padding: 6px 14px;
+width: 18rem;
+font-size: 16px;
+}
+
+.register-button {
+border: none;
+border-radius: 6px;
+padding: 5px 10px;
+background-color: yellow;
+width: 5rem;
+}
+
+.register-labels {
+display: flex;
+flex-direction: column;
+margin-top: 30px;
+}
+
+.login-button {
+color: yellow;
+}
+
+.have-an-account {
+margin-top: 10px;
+}
+
+@media (max-width: 700px) {
+.container-div {
+    margin: 20vh 0;
+}
+}

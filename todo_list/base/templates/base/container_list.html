@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Todo List</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'base/container_list.css' %}">
+</head>
+
+<body>
+  
+  <div class="container-div">
+
+    <div class="login-logout-div">
+      {% if user.is_authenticated %}
+        <h4 class="welcome-user">Welcome: </h4>
+        <h3 class="user-name">{{ user }}</h3>
+        <a href="{% url 'logout' %}"><button type="button" class="login-logout-btn">Logout</button></a>
+        {% else %}
+        <a href="{% url 'login' %}"><button type="button" class="login-logout-btn">Login</button></a>
+      {% endif %}
+    </div>
+      
+      <h1 class="todo-list-title">Containers</h1>
+
+      <ul>
+        {% for container in containers %}
+          <div>
+           <a href="{% url 'container_detail' container_id=container.id %}"><button class="title-button" type="button"> {{ container.title }} </button></a>
+          </div>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'create_container' %}" ><button class="create-container-btn">Create Container</button></a>
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% load static %}
+
+<html>
+<head>
+    <title>No</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'base/task_confirm_delete.css' %}">
+    <style>
+    </style>
+</head>
+<body>
+    <div class="container-div">
+        <div class="card-body">
+            <form method="post" class="confirmation-form" action="{% url 'delete_container' container.id %}">
+                <a href="{% url 'container_detail' container_id=container.id %}" class="go-back-link">
+                    <button type="button" class="go-back-btn">Go Back</button>
+                </a>
+                {% csrf_token %}
+                <p>Are you sure you want to delete this container? <br><b>"{{ container }}"</b></p>
+                <input class="delete-button" type="submit" value="Delete" name="confirm">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

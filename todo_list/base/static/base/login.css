@@ -1,0 +1,84 @@
+body {
+    background-color: #3e3e3e;
+}
+
+        .container-div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 15rem 40rem;
+            border-radius: 20px;
+        }
+        
+        .username-password-container-div {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .username-label {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-bottom: 8px;
+        }
+
+        .password-label {
+            display: flex;
+            flex-direction: column;
+            gap: 4px; 
+        }
+
+        .username-input input[type="text"],
+        .password-input input[type="password"] {
+            border: 2px black solid;
+            border-radius: 6px;
+            padding: 6px 14px;
+            width: 18rem;
+        }
+
+        .login-button {
+            background-color: yellow;
+            border: none;
+            border-radius: 6px;
+            padding: 5px 12px;
+            margin-top: 10px;
+            width: 4rem;
+        }
+
+        .register-link {
+            color: yellow;
+        }
+
+        ul.errorlist {
+            display: flex;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            color: red;
+            font-size: 16px;
+        }
+        
+        .error-field {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 10px;
+            width: 20rem;
+            color: red;
+            margin-bottom: 15px;
+        }
+
+        .login-register-container-div {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        @media (max-width: 700px) {
+            .container-div {
+                margin: 30vh 0;
+            }
+        }

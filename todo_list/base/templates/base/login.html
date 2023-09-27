@@ -1,0 +1,47 @@
+{% load static %}
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'base/login.css' %}" />
+</head>    
+<body>
+
+<div class="container-div">
+<div class="header-bar">
+    <h1>Login</h1>
+</div>
+
+<div class="card-body">
+    <form method="POST" class="login-form">
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+        <div class="error-field">
+            {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+        
+        <div class="username-password-container-div">
+            <div class="username-label">
+                <label for="username">Username:</label>
+                <div class="username-input">
+                    <input id="username" name="username" type="text">
+                </div>
+            </div>
+            <div class="password-label">
+                <label for="password">Password:</label>
+                <div class="password-input">
+                    <input id="password" name="password" type="password">
+                </div>
+                <input class="login-button" type="submit" value="Login">
+            </div>
+            <div class="login-register-container-div">
+                <p>Don't have an account? <a href="{% url 'register' %}" class="register-link">Register</a></p>
+            </div>
+        </div>
+    </form>
+</div>
+</div>    
+</body>
+</html>

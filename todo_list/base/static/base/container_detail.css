@@ -1,0 +1,216 @@
+
+body {
+    background-image: radial-gradient(#2a3031 50%, #393d3e);
+    display: flex;
+  }
+  
+  .container-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(53, 50, 50);
+    margin: auto;
+    width: 30rem;
+    border-radius: 6vh;
+  }
+  
+  li {
+    display: flex;
+    flex-direction: column;
+    background-color: gray;
+    margin: 20px;
+    padding: 1.2vh 3rem;
+    border-radius: 6px;
+  }
+  
+  ul {
+    padding: 0px 20px 0px 20px;
+  }
+  
+  h3 {
+    word-wrap: break-word;
+  }
+  
+  .edit-link,
+  :visited,
+  ::after {
+    text-decoration: none;
+    color: #b2bec3;
+    background-color: #0984e3;
+    border-radius: 6px;
+    padding: 0.6vh 1.3vw;
+    margin-bottom: 1vh;
+    text-align: center;
+  }
+  
+  .task-title {
+    text-align: center;
+    margin: 10px 0 5px 0;
+    max-width: 20rem;
+    font-size: 16px;
+  }
+
+  .title-completed {
+    text-align: center;
+    margin: 10px 0 5px 0;
+    text-decoration: line-through;
+  }  
+  
+  .task-completed {
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: rgb(85, 255, 0);
+    border-radius: 50%;
+    border: none;
+    text-decoration: line-through;
+    font-size: 16px;
+  }
+  
+  .task-incomplete {
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: rgb(255, 0, 0);
+    border-radius: 50%;
+    border: none;
+
+  }
+  
+  .task-status-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 0.3vw;
+  }
+  
+  .create-task-btn {
+    text-decoration: none;
+    color: #2d3436;
+    background-color: #00cec9;
+    margin-bottom: 2vh;
+    padding: 0.8vh 0.8vw;
+    text-align: center;
+    border-radius: 6px;
+  }
+  
+  .todo-list-title {
+    margin: 2vh 0 0 0;
+  }
+  
+  .login-logout-div {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.3vw;
+    width: 90%;
+  }
+  
+  .welcome-user {
+    color: crimson;
+  }
+  
+  .user-name {
+    color: white;
+    padding-right: 0.6vw;
+  }
+  
+  .login-logout-btn {
+    background-color: #81ecec;
+      color: #2d3436;
+      border: none;
+      padding: 0.8vh 1.6vw;
+      border-radius: 6px;
+      width: 100%;
+      cursor: pointer;
+  }
+  
+  .delete-btn {
+    background-color: #81ecec;
+    color: #2d3436;
+    border: none;
+    padding: 0.8vh 6vw;
+    border-radius: 6px;
+    width: 100%;
+    cursor: pointer;
+  }
+  
+  .delete-container-form {
+    display: flex;
+    justify-content: center;
+  }
+
+  .delete-container-btn {
+    background-color: #81ecec;
+    color: #2d3436;
+    border: none;
+    padding: 0.8vh 2vw;
+    border-radius: 6px;
+    cursor: pointer; 
+  }
+
+  .create-task-btn {
+    text-decoration: none;
+    color: #2d3436;
+    background-color: #00cec9;
+    margin-bottom: 2vh;
+    padding: 0.8vh 0.8vw;
+    text-align: center;
+    border-radius: 6px;
+    border: none;
+  }
+
+  .search-btn {
+    padding: 8px 14px;
+    background-color: yellow;
+    border: none;
+    border-radius: 6px;
+  }
+
+  .search-input {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+  }
+
+  .container-title {
+    color: white;
+  }
+
+  .reverse-list-btn {
+    border: none;
+    border-radius: 6px;
+    padding: 5px;
+    height: 2.1rem;
+  }
+
+  .search-container-div {
+    display: flex;
+    gap: 4px;
+  }
+
+  @media (max-width: 700px) {
+  
+  body {
+    display: flex;
+    background-color: #3e3e3e;
+    margin: auto;
+  }
+  
+    .container-div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 95%;
+      margin: auto;
+    }
+  
+    li {
+      padding: 1.6rem 2.4rem;
+    }
+  
+    .delete-btn {
+      padding: 0.4rem 6rem;
+    }
+  }
+  

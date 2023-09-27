@@ -1,0 +1,48 @@
+{% load static %}
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'base/register.css' %}" />
+    </head>
+    <body>
+
+<div class="container-div">
+
+<div class="card-body">
+    <h1>Register</h1>
+    <form method="POST" class="form-body">
+        {% csrf_token %}
+        <form method="post">
+            {% csrf_token %}
+            <div class="register-labels">
+            <label id="username" for="{{ form.username.id_for_label }}">Username:</label>
+            {{ form.username }}
+        </div>
+        <div class="error-message1">
+            {{ form.username.errors }}
+        </div>
+            <div class="register-labels">
+            <label id="password1" for="{{ form.password1.id_for_label }}">Password:</label>
+            {{ form.password1 }}
+        </div>
+        <div class="error-message2">
+            {{ form.password1.errors }}
+        </div>
+            <div class="register-labels">
+            <label id="password2" for="{{ form.password2.id_for_label }}">Confirm Password:</label>
+            {{ form.password2 }}
+            </div>
+            <div class="error-message3">
+                {{ form.password2.errors }}
+            </div>
+            <br>
+            <input class="register-button" type="submit" value="Register">
+        </form>
+    </form>
+    <p class="have-an-account">Already have an account? <a href="{% url 'login' %}" class="login-button">Login</a></p>
+</div>
+</div>
+</body>
+</html>

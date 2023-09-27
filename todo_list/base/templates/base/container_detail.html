@@ -1,0 +1,89 @@
+{% load static %}
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/website/css/uicons-bold-rounded.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'base/container_detail.css' %}" />
+  </head>
+
+  <body>
+
+    <div class="container-div">
+      <h3 class="container-title">{{ container.title }}</h3>
+      
+      <div class="search-container-div">
+        <button onclick="reverseList()" class="reverse-list-btn"><i class="fa-solid fa-sort"></i></button>
+        <form method="get" action="{% url 'container_detail' container_id=container.id %}">
+          <input type="text" name="search-area" value="{{ search_input }}" placeholder="Search tasks..." class="search-input">
+          <input type="submit" value="Search" class="search-btn">
+        </form>
+      </div>
+
+      <ul id="reversable-list">
+        {% for task in tasks %}
+        <li>
+          {% if task.completed %}
+          <div>
+            <h3 class="title-completed">{{ task.title }}</h3>
+            <p class="title-completed">{{ task.completed_at }}</p>
+            <div class="task-status-container">
+              <p>Finished:</p>
+              <button type="button" class="task-completed"></button>
+            </div>
+          </div>
+
+          {% else %}
+          <div>
+            <h3 class="task-title">{{ task.title }}</h3>
+            <p class="task-title">Due: {{ task.due|timeuntil }}</p>
+            <div class="task-status-container">
+              <p>Finished:</p>
+              <button type="button" class="task-incomplete"></button>
+            </div>
+          </div>
+          {% endif %}
+
+          <a href="{% url 'update_task' task.pk %}" class="edit-link">Edit</a>
+
+          <form action="{% url 'delete_task' task.pk %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="delete-btn">Delete</button>
+          </form>
+        </li>
+
+        {% endfor %}
+      </ul>
+
+      <form method="post" action="{% url 'create_task' container_id=container.id %}">
+        {% csrf_token %}
+
+        <div class="form-group">
+          <button type="submit" class="create-task-btn">Create Task</button>
+          <a href="{% url 'container_list' %}">
+            <button type="button" class="create-task-btn">Go Back</button>
+          </a>
+        </div>
+      </form>
+      <form action="{% url 'delete_container' container.id %}" method="post" class="delete-container-form">
+        {% csrf_token %}
+        <button type="submit" class="delete-container-btn">Delete Container</button>
+    </form>
+    </div>
+
+    <script src="https://kit.fontawesome.com/cb0ff70d15.js" crossorigin="anonymous"></script>
+
+    <script>
+        function reverseList() {
+        const ulElement = document.getElementById('reversable-list');
+        const listItems = ulElement.getElementsByTagName('li');
+
+        for (let i = listItems.length - 1; i >= 0; i--) {
+          ulElement.appendChild(listItems[i]);
+        }
+      }
+    </script>
+    
+  </body>
+</html>

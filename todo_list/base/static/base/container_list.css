@@ -1,0 +1,206 @@
+body {
+    background-image: radial-gradient(#2a3031 50%, #393d3e);
+    display: flex;
+  }
+  
+  .container-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(53, 50, 50);
+    margin: auto;
+    width: 30rem;
+    border-radius: 6vh;
+  }
+  
+  li {
+    display: flex;
+    flex-direction: column;
+    background-color: gray;
+    margin: 20px;
+    padding: 1.2vh 3rem;
+    border-radius: 6px;
+  }
+  
+  ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px 20px 0px 20px;
+  }
+  
+  h3 {
+    word-wrap: break-word;
+  }
+  
+  .edit-link,
+  :visited,
+  ::after {
+    text-decoration: none;
+    color: #b2bec3;
+    background-color: #0984e3;
+    border-radius: 6px;
+    padding: 0.6vh 1.3vw;
+    margin-bottom: 1vh;
+    text-align: center;
+  }
+  
+  .task-title {
+    text-align: center;
+    margin: 10px 0 5px 0;
+  }
+  
+  .title-completed {
+    text-decoration: line-through;
+    text-align: center;
+  
+  }
+  
+  .task-completed {
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: rgb(85, 255, 0);
+    border-radius: 50%;
+  }
+  
+  .task-incomplete {
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: rgb(255, 0, 0);
+    border-radius: 50%;
+  }
+  
+  .task-status-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 0.3vw;
+  }
+  
+  .create-task-btn {
+    text-decoration: none;
+    background-color: #00cec9;
+    margin-bottom: 2vh;
+    padding: 0.8vh 0.8vw;
+    text-align: center;
+    border-radius: 6px;
+  }
+
+  .todo-list-title {
+    margin: 2vh 0 0 0;
+    color: white;
+  }
+  
+  .login-logout-div {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.3vw;
+    width: 90%;
+  }
+  
+  .welcome-user {
+    color: crimson;
+  }
+  
+  .user-name {
+    color: white;
+    padding-right: 0.6vw;
+  }
+  
+  .login-logout-btn {
+    background-color: #4cd137;
+      color: #2d3436;
+      border: none;
+      padding: 0.8vh 1.6vw;
+      border-radius: 6px;
+      width: 100%;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.4s;
+  }
+
+  .login-logout-btn:hover {
+    color: black;
+    background-color: crimson; 
+  }
+  
+  .delete-btn {
+    background-color: #81ecec;
+    color: #2d3436;
+    border: none;
+    padding: 0.8vh 6vw;
+    border-radius: 6px;
+    width: 100%;
+    cursor: pointer;
+  }
+
+  .title-button {
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 10px 15px;
+    margin: 10px 0;
+    background-color: #fed330;
+    transition: 0.4s;
+    width: 16rem;
+    font-size: 1rem;
+  }
+
+  .title-button:hover {
+    background-color: #ffee00;
+  }
+
+.create-container-btn:hover,
+.create-container-btn:focus {
+box-shadow: 0 0.5em 0.5em -0.4em #fed330;
+transform: translateY(-0.25em);
+}
+
+.create-container-btn {
+background: none;
+border: 2px solid;
+font: inherit;
+line-height: 1;
+margin: 0.5em;
+padding: 0.5em 1.5em;
+color: yellow;
+transition: 0.25s;
+border-radius: 6px;
+}  
+
+.create-container-btn:hover,
+:focus { 
+  border-color: #fed330;
+  color: white;
+  background-color: #3e3e3e;
+}
+
+  
+  @media (max-width: 700px) {
+  
+  body {
+    display: flex;
+    background-color: #3e3e3e;
+    margin: auto;
+  }
+  
+    .container-div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 95%;
+      margin: auto;
+    }
+  
+    li {
+      padding: 1.6rem 2.4rem;
+    }
+  
+    .delete-btn {
+      padding: 0.4rem 6rem;
+    }
+  }
+  

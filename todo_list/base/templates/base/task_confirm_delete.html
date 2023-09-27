@@ -1,0 +1,28 @@
+{% load static %}
+
+<html>
+    <head>
+        <title>No</title>
+    </head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'base/task_confirm_delete.css'%}">
+    <style>
+
+
+    </style>
+<body>
+<div class="container-div">
+    <div class="card-body">
+        <form method="POST" class="confirmation-form">
+            <a href="{% url 'container_detail' container_id=task.container.id  %}" class="go-back-link"> 
+                <button type="button" class="go-back-btn">Go Back</button>
+            </a>
+            {% csrf_token %}
+            <p class="task-title-delete">Are you sure you want to delete this task? <br><b>"{{task}}"</b></p>
+            <input class="delete-button" type="submit" value="Delete" name="confirm">
+        </form>
+    </div>
+</div>
+</body>
+</html> 
