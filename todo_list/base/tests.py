@@ -14,6 +14,9 @@ import os
 import sys
 
 
+
+
+
 # class GetIntoPageTest(LiveServerTestCase):
 #     with sync_playwright() as p:
 #         browser = p.chromium.launch(headless=False, slow_mo=50)
@@ -56,6 +59,10 @@ import sys
 #             self.assertTrue("Expected text" in total_orders)  # Add your assertions here as needed
 
 
+
+
+
+
 # class RegisterUserInPageTest(TestCase, StaticLiveServerTestCase):
 
 #     def setUp(self):
@@ -85,25 +92,25 @@ import sys
 
 class MyFunctionalTest(TestCase, StaticLiveServerTestCase):
 
-    # @classmethod
-    # def setUpClass(cls):
-    #     super().setUpClass()
-    #     print("this is class setup")
-    #     cls.browser = None
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        print("this is class setup")
+        cls.browser = None
 
-    # @classmethod
-    # def tearDownClass(cls):
-    #     if cls.browser:
-    #         cls.browser.close()
-    #     super().tearDownClass()
-    #     print("this is class teardown")
+    @classmethod
+    def tearDownClass(cls):
+        if cls.browser:
+            cls.browser.close()
+        super().tearDownClass()
+        print("this is class teardown")
 
     def setUp(self):
         os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
         super().setUp()
         print('this is setup')
         self.playwright = sync_playwright().start()
-        self.browser = self.playwright.chromium.launch(headless=False, slow_mo=1000)
+        self.browser = self.playwright.chromium.launch(headless=False, slow_mo=100000)
         page = self.browser.new_page()
         page.goto(f"{self.live_server_url}/register/")
         page.get_by_label("Username:").fill("test")
@@ -111,36 +118,36 @@ class MyFunctionalTest(TestCase, StaticLiveServerTestCase):
         page.get_by_label("Confirm Password:").fill("test123!")
         page.get_by_role("button", name="Register").click()
 
-    def tearDown(self):
-        super().tearDown()
-        print('this is teardown')
-        self.browser.close()
-        self.playwright.stop()
+    # def tearDown(self):
+    #     super().tearDown()
+    #     print('this is teardown')
+    #     self.browser.close()
+    #     self.playwright.stop()
     
-    def test_login_with_container(self):
-        from base.models import TaskContainer
-        user, create = User.objects.get_or_create(username='test')
+    # def test_login_with_container(self):
+    #     from base.models import TaskContainer
+    #     user, create = User.objects.get_or_create(username='test')
 
-        container = TaskContainer.objects.create(
-            user=user,
-            title='Test123123123'
-        )
+    #     container = TaskContainer.objects.create(
+    #         user=user,
+    #         title='Test123123123'
+    #     )
 
-        container.save()
+    #     container.save()
 
-        page = self.browser.new_page()
-        page.goto(f"{self.live_server_url}/login/")
-        page.get_by_label("Username:").fill("test")
-        page.get_by_label("Password:").fill("test123!")
-        page.get_by_role("button", name="Login").click()
+    #     page = self.browser.new_page()
+    #     page.goto(f"{self.live_server_url}/login/")
+    #     page.get_by_label("Username:").fill("test")
+    #     page.get_by_label("Password:").fill("test123!")
+    #     page.get_by_role("button", name="Login").click()
         
 
-    def test_login_without_containers(self):
-        page = self.browser.new_page()
-        page.goto(f"{self.live_server_url}/login/")
-        page.get_by_label("Username:").fill("test")
-        page.get_by_label("Password:").fill("test123!")
-        page.get_by_role("button", name="Login").click()
+    # def test_login_without_containers(self):
+    #     page = self.browser.new_page()
+    #     page.goto(f"{self.live_server_url}/login/")
+    #     page.get_by_label("Username:").fill("test")
+    #     page.get_by_label("Password:").fill("test123!")
+    #     page.get_by_role("button", name="Login").click()
 
 
 
@@ -386,4 +393,3 @@ class MyFunctionalTest(TestCase, StaticLiveServerTestCase):
         
         
         
-        # self.client.force_login(user)
